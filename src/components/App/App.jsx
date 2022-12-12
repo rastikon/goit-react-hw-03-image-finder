@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { getImages } from 'services/image-api';
 import LoadMore from 'components/Button/LoadMore';
-import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/LoaderImg';
 
 export default class App extends Component {
   state = {
