@@ -17,11 +17,10 @@ export default class ImageGalleryItem extends Component {
     return (
       <>
         <li className="ImageGalleryItem" onClick={this.toggleModal}>
-          <img src={smallImage} className="ImageGalleryItem-image" alt="tags" />
+          <img className="ImageGalleryItem-image" src={smallImage} alt="tags" />
         </li>
         {isModalOpen && (
           <Modal closeModal={this.toggleModal}>
-            {' '}
             <img src={largeImage} alt="tags" />
           </Modal>
         )}

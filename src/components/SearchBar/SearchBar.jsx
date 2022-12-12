@@ -26,7 +26,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <header className="Searchbar">
+      <div className="Searchbar">
         <form className="SearchForm" onSubmit={this.handleSubmit}>
           <button className="SearchForm-button" type="submit">
             <span className="SearchForm-button-label">Search</span>
@@ -42,7 +42,7 @@ export default class SearchBar extends Component {
             onChange={this.handleNameChange}
           />
         </form>
-      </header>
+      </div>
     );
   }
 }
