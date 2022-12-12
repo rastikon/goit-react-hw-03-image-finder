@@ -1,5 +1,5 @@
 import Modal from 'components/Modal/Modal';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 export default class ImageGalleryItem extends Component {
   state = {
@@ -20,11 +20,10 @@ export default class ImageGalleryItem extends Component {
           <img src={smallImage} className="ImageGalleryItem-image" alt="tags" />
         </li>
         {isModalOpen && (
-          <Modal
-            closeModal={this.toggleModal}
-            modalImg={largeImage}
-            alt="tags"
-          />
+          <Modal closeModal={this.toggleModal}>
+            {' '}
+            <img src={largeImage} alt="tags" />
+          </Modal>
         )}
       </>
     );
