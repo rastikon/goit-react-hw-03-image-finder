@@ -1,4 +1,4 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 
 export default function ImageGallery({ images }) {

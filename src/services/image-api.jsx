@@ -1,10 +1,9 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 const KEY = '31433841-9c408bc215e2389a40b91ba82';
 
-// const BASE_URL = 'https://pixabay.com/api';
 //Запит на сервер
 export const getImages = async (newImage, page) => {
   const { data } = await axios.get(

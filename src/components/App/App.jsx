@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import SearchBar from 'components/SearchBar/SearchBar';
-// import FetchImage from 'services/image-api';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { getImages } from 'services/image-api';
 import LoadMore from 'components/Button/LoadMore';
-// import * as API from 'services/image-api';
-// import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { Loader } from 'components/Loader/Loader';
 
 export default class App extends Component {
   state = {
@@ -57,14 +55,13 @@ export default class App extends Component {
   render() {
     const { images, isLoading, totalHits } = this.state;
     return (
-      <div className="App">
+      <>
         <SearchBar onSubmit={this.handleFormSubmit} />
         <ImageGallery images={images} isLoading={isLoading} />
         <ToastContainer autoClose={3000} />
-        {totalHits !== this.state.images.length && !isLoading && (
-          <LoadMore onClick={this.loadMore} />
-        )}
-      </div>
+        {totalHits !== this.state.images.length &&
+          (!isLoading ? <LoadMore onClick={this.loadMore} /> : <Loader />)}
+      </>
     );
   }
 }

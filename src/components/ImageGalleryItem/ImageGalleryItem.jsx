@@ -1,16 +1,32 @@
+import Modal from 'components/Modal/Modal';
 import { Component } from 'react';
-// import FetchImage from 'services/image-api';
 
 export default class ImageGalleryItem extends Component {
+  state = {
+    isModalOpen: false,
+  };
+
+  toggleModal = () => {
+    this.setState(({ isModalOpen }) => ({ isModalOpen: !isModalOpen }));
+  };
+
   render() {
     const { smallImage, largeImage } = this.props;
+    const { isModalOpen } = this.state;
 
     return (
-      <div>
-        <li className="ImageGalleryItem">
-          <img src={smallImage} className="ImageGalleryItem-image" />
+      <>
+        <li className="ImageGalleryItem" onClick={this.toggleModal}>
+          <img src={smallImage} className="ImageGalleryItem-image" alt="tags" />
         </li>
-      </div>
+        {isModalOpen && (
+          <Modal
+            closeModal={this.toggleModal}
+            modalImg={largeImage}
+            alt="tags"
+          />
+        )}
+      </>
     );
   }
 }
