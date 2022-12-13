@@ -40,7 +40,7 @@ export default class App extends Component {
         .then(data => {
           this.setState(prev => ({
             images: [...prev.images, ...data.hits], // Записуємо масив в images
-            totalHits: this.state.page < Math.ceil(data.totalHits / 12),
+            totalHits: this.state.page < Math.ceil(data.totalHits / 12), //Записуємо кількість знайдених фотографій
             // page === 1
             //   ? data.totalHits - data.hits.length
             //   : data.totalHits - [...prev.images, ...data.hits].length, //Записуємо кількість знайдених фотографій
@@ -59,7 +59,8 @@ export default class App extends Component {
         <SearchBar onSubmit={this.handleFormSubmit} />
         <ImageGallery images={images} isLoading={isLoading} />
         <ToastContainer autoClose={3000} />
-        {!!totalHits && (!isLoading ? (<LoadMore onClick={this.loadMore} />) : (<Loader />))}
+        {!!totalHits &&
+          (!isLoading ? <LoadMore onClick={this.loadMore} /> : <Loader />)}
       </>
     );
   }
