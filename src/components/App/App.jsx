@@ -18,7 +18,7 @@ export default class App extends Component {
 
   // передача данних з поля форми
   handleFormSubmit = imageName => {
-    this.setState({ imageName, page: 1 });
+    this.setState({ imageName, images: [], page: 1 });
   };
 
   //Функція завантажит ще зображень
@@ -39,11 +39,11 @@ export default class App extends Component {
       getImages(imageName, page)
         .then(data => {
           this.setState(prev => ({
-            images: page === 1 ? data.hits : [...prev.images, ...data.hits], // Записуємо масив в images
-            totalHits:
-              page === 1
-                ? data.totalHits - data.hits.length
-                : data.totalHits - [...prev.images, ...data.hits].length, //Записуємо кількість знайдеих фотографій
+            images: [...prev.images, ...data.hits], // Записуємо масив в images
+            totalHits: this.state.page < Math.ceil(data.totalHits / 12),
+            // page === 1
+            //   ? data.totalHits - data.hits.length
+            //   : data.totalHits - [...prev.images, ...data.hits].length, //Записуємо кількість знайдених фотографій
           }));
         })
         .finally(() => {
@@ -59,7 +59,7 @@ export default class App extends Component {
         <SearchBar onSubmit={this.handleFormSubmit} />
         <ImageGallery images={images} isLoading={isLoading} />
         <ToastContainer autoClose={3000} />
-        {totalHits !== this.state.images.length &&
+        {!!totalHits &&
           (!isLoading ? <LoadMore onClick={this.loadMore} /> : <Loader />)}
       </>
     );

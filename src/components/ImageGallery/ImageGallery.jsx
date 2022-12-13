@@ -1,5 +1,5 @@
-// import { Component } from 'react';
-import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+import { Component } from 'react';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export default function ImageGallery({ images }) {
   return (
@@ -9,7 +9,7 @@ export default function ImageGallery({ images }) {
           key={hit.id}
           alt={hit.tags}
           smallImage={hit.webformatURL}
-          largeImage={hit.largeImage}
+          largeImage={hit.largeImageURL}
         />
       ))}
     </ul>
